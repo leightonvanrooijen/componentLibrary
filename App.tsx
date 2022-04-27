@@ -1,20 +1,29 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+import { StatusBar } from 'expo-status-bar';
+
+import { StyleSheet, View } from 'react-native';
+import { DropdownInput } from './componenets/dropdownInput/DropdownInput';
+import { Sizes } from './componenets/common/types/Sizes';
+import { baseTheme } from './theme/theme';
+import { ThemeProvider } from 'styled-components';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    padding: 10,
   },
 });
+
+export default function App() {
+  return (
+    <ThemeProvider theme={baseTheme}>
+      <View style={styles.container}>
+        <DropdownInput size={Sizes.Medium} />
+        {/* eslint-disable-next-line react/style-prop-object */}
+        <StatusBar style="auto" />
+      </View>
+    </ThemeProvider>
+  );
+}
